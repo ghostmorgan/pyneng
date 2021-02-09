@@ -64,21 +64,12 @@ trunk_template = [
     "switchport trunk allowed vlan {}",
 ]
 
-#словарь для выбора какой шаблон использовать
-templates = {"access": access_template, "trunk": trunk_template}
 
-#Ввод информации от пользователя
-interface = input("Введите режим работы интерфейса (access/trunk): ")
-number = input("Введите тип и номер интерфейса: ")
+template = {"access": access_template, "trunk": trunk_template}
+
+mode = input("Введите режим работы интерфейса (access/trunk): ")
+interface = input("Введите тип и номер интерфейса: ")
 vlans = input("Введите номер влан(ов): ")
 
-#форматирование шаблона в зависимости от того что ввел пользователь
-res_temp = "\n".join(templates[interface]).format(vlans)
-
-#шаблон вывода итогового результата на экран
-print_template = f"""
-interface {number}
-{res_temp}
-"""
-
-print(print_template)
+print(f"interface {interface}")
+print("\n".join(template[mode]).format(vlans))
