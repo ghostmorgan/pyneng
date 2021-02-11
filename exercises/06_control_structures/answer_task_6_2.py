@@ -13,20 +13,16 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
 
-ip = input("Введите ip-адрес в формате 10.0.1.1: ")
+ip_address = input("введите ip-адрес: ")
+oct1 = int(ip_address.split(".")[0])
 
-unassigned = '0.0.0.0'
-local_broadcast = '255.255.255.255'
-
-first_octet = int(ip.split('.')[0])
-
-if ip == unassigned:
-   print('unassigned')
-elif ip == local_broadcast:
-   print('local broadcast')
-elif 1<= first_octet <= 224:
-   print('unicast')
-elif 224 <= first_octet <= 240:
-   print('multicast')
+if ip_address == "255.255.255.255":
+    print("local broadcast")
+elif ip_address == "0.0.0.0":
+    print("unassigned")
+elif 1 <= oct1 <= 223:
+    print("unicast")
+elif 224 <= oct1 <= 239:
+    print("multicast")
 else:
-   print('unused')
+    print("unused")
